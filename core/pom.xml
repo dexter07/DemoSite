@@ -32,6 +32,18 @@
                 </configuration>
             </plugin>
         </plugins>
+        <filters>
+            <filter>${basedir}/../filter-values.properties</filter>
+        </filters>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+            <resource>
+                <directory>src/main/java</directory>
+            </resource>
+        </resources>
     </build>
     <dependencies>
         <dependency>

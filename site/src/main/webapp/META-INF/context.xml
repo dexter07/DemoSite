@@ -20,7 +20,7 @@
               username="root"
               password=""
               driverClassName="com.mysql.jdbc.Driver"
-              url="jdbc:mysql://localhost:3306/broadleafcommerce"/>
+              url="jdbc:mysql://${db.host}:3306/broadleafcommerce"/>
 
     <Resource name="jdbc/storage"
               auth="Container"
@@ -42,7 +42,7 @@
               username="root"
               password=""
               driverClassName="com.mysql.jdbc.Driver"
-              url="jdbc:mysql://localhost:3306/broadleafcommerce"/>
+              url="jdbc:mysql://${db.host}:3306/broadleafcommerce"/>
 
     <Resource name="jdbc/secure"
               auth="Container"
@@ -64,5 +64,5 @@
               username="root"
               password=""
               driverClassName="com.mysql.jdbc.Driver"
-              url="jdbc:mysql://localhost:3306/broadleafcommerce"/>
+              url="jdbc:mysql://${db.host}:3306/broadleafcommerce"/>
 </Context>
