@@ -137,7 +137,7 @@
         <property name="characterEncoding" value="UTF-8" />
     </bean>
 
-    <!--<bean id="blAuthorizeAndDebitWorkflow" class="org.broadleafcommerce.core.workflow.SequenceProcessor">
+    <bean id="blAuthorizeAndDebitWorkflow" class="org.broadleafcommerce.core.workflow.SequenceProcessor">
         <property name="processContextFactory">
             <bean class="org.broadleafcommerce.core.payment.service.workflow.PaymentProcessContextFactory">
                 <property name="paymentActionType" value="AUTHORIZEANDDEBIT"/>
@@ -191,5 +191,5 @@
             </list>
         </property>
         <property name="defaultErrorHandler" ref="blDefaultErrorHandler"/>
-    </bean>-->
+    </bean>
 </beans>
