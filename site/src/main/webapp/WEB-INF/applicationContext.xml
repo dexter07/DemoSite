@@ -192,4 +192,6 @@
         </property>
         <property name="defaultErrorHandler" ref="blDefaultErrorHandler"/>
     </bean>
+
+    <bean class="org.broadleafcommerce.load.ProtoChannelBeanPostProcessor"/>
 </beans>
