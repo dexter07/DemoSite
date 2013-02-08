@@ -76,7 +76,7 @@
     <!-- majority of cases. Note that you may also pass in a bean reference to a SolrServer if you would prefer -->
     <!-- to use a standalone solr server. (The default constructor will create an embedded one at solrHome) -->
     <bean id="solrEmbedded" class="java.lang.String">
-        <constructor-arg value="solrhome"/>
+        <constructor-arg value="${solr.home}"/>
     </bean>
     <bean id="blSearchService" class="org.broadleafcommerce.core.search.service.solr.SolrSearchServiceImpl">
         <constructor-arg name="solrServer" ref="${solr.source}" />
