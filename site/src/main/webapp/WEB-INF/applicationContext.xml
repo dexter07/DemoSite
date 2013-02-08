@@ -186,7 +186,7 @@
                     <property name="userName" value="web"/>
                 </bean>
                 <bean class="org.broadleafcommerce.load.ThirdPartyInteractionLatencySimulationActivity">
-                    <property name="waitTime" value="1000"/>
+                    <property name="waitTime" value="300"/>
                 </bean>
             </list>
         </property>
