@@ -9,6 +9,8 @@
     </appender>
 
     <logger name="org.broadleafcommerce"> <level value="info" /> </logger>
+    <logger name="org.broadleafcommerce.core.search.service.solr.SolrIndexServiceImpl"> <level value="debug" /> </logger>
+    <logger name="org.broadleafcommerce.load.PrimeCacheService"> <level value="debug" /> </logger>
     <logger name="org.springframework"> <level value="warn" /> </logger>
     <logger name="org.springframework.web"> <level value="warn" /> </logger>
     <logger name="org.springframework.web.servlet"> <level value="warn" /> </logger>
