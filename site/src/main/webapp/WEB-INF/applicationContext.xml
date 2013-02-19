@@ -186,13 +186,13 @@
         <property name="defaultErrorHandler" ref="blDefaultErrorHandler"/>
     </bean>
 
-    <bean class="org.broadleafcommerce.load.ProtoChannelBeanPostProcessor"/>
+    <!--<bean class="org.broadleafcommerce.load.ProtoChannelBeanPostProcessor"/>-->
 
     <bean id="solrServer" class="org.apache.solr.client.solrj.impl.HttpSolrServer">
        <constructor-arg value="${solr.url}"/>
     </bean>
 
-    <bean id="blPrimeCacheService" class="org.broadleafcommerce.load.PrimeCacheService"/>
+    <!--<bean id="blPrimeCacheService" class="org.broadleafcommerce.load.PrimeCacheService"/>
 
     <bean id="primeCacheJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
         <property name="targetObject" ref="blPrimeCacheService" />
@@ -203,7 +203,7 @@
         <property name="jobDetail" ref="primeCacheJobDetail" />
         <property name="startDelay" value="5000" />
         <property name="repeatInterval" value="31104000000" />
-    </bean>
+    </bean>-->
 
     <bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
         <property name="triggers">
