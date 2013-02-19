@@ -9,7 +9,7 @@
               testOnReturn="false"
               validationQuery="SELECT 1"
               timeBetweenEvictionRunsMillis="30000"
-              maxActive="150"
+              maxActive="300"
               maxIdle="10"
               minIdle="5"
               removeAbandonedTimeout="60"
