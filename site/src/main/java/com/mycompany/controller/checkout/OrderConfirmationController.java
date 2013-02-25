@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.mycompany.controller.checkout;
 
 import org.broadleafcommerce.common.email.service.EmailService;
@@ -37,29 +36,27 @@ import java.util.HashMap;
 @Controller
 public class OrderConfirmationController extends BroadleafOrderConfirmationController {
 
-    @Resource(name="blCustomerDao")
+    @Resource(name = "blCustomerDao")
     protected CustomerDao customerDao;
-    
     @Resource(name = "blEmailService")
     protected EmailService emailService;
-    
     @Resource(name = "blOrderConfirmationEmailInfo")
     protected EmailInfo orderConfirmationEmailInfo;
-
-    @Resource(name="blOrderService")
+    @Resource(name = "blOrderService")
     protected OrderService orderService;
 
     @RequestMapping(value = "/confirmation/{orderNumber}", method = RequestMethod.GET)
+    @Override
     public String displayOrderConfirmationByOrderNumber(@PathVariable("orderNumber") String orderNumber, Model model,
             HttpServletRequest request, HttpServletResponse response) {
         sendConfirmationEmail(orderNumber);
         return super.displayOrderConfirmationByOrderNumber(orderNumber, model, request, response);
     }
-    
-    public void sendConfirmationEmail(String orderNumber){
+
+    public void sendConfirmationEmail(String orderNumber) {
         Order order = orderService.findOrderByOrderNumber(orderNumber);
         Customer customer = customerDao.readCustomerByEmail(order.getEmailAddress());
-        if (customer != null){
+        if (customer != null) {
             HashMap<String, Object> vars = new HashMap<String, Object>();
             vars.put("customer", customer);
             vars.put("orderNumber", orderNumber);

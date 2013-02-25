@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.mycompany.controller.account;
 
 import org.broadleafcommerce.common.exception.ServiceException;
@@ -34,14 +33,14 @@ import javax.servlet.http.HttpServletRequest;
 public class UpdateAccountController extends BroadleafUpdateAccountController {
 
     @RequestMapping(method = RequestMethod.GET)
+    @Override
     public String viewUpdateAccount(HttpServletRequest request, Model model, @ModelAttribute("updateAccountForm") UpdateAccountForm form) {
         return super.viewUpdateAccount(request, model, form);
     }
 
     @RequestMapping(method = RequestMethod.POST)
+    @Override
     public String processUpdateAccount(HttpServletRequest request, Model model, @ModelAttribute("updateAccountForm") UpdateAccountForm form, BindingResult result, RedirectAttributes redirectAttributes) throws ServiceException {
         return super.processUpdateAccount(request, model, form, result, redirectAttributes);
     }
-
-
 }

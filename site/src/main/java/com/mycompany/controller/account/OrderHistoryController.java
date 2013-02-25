@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.mycompany.controller.account;
 
 import javax.annotation.Resource;
@@ -34,18 +33,18 @@ public class OrderHistoryController extends BroadleafOrderHistoryController {
 
     @Resource(name = "blStateService")
     StateService stateService;
-
     @Resource(name = "blCountryService")
     CountryService countryService;
 
     @RequestMapping(method = RequestMethod.GET)
+    @Override
     public String viewOrderHistory(HttpServletRequest request, Model model) {
-        return super.viewOrderHistory(request, model); 
+        return super.viewOrderHistory(request, model);
     }
 
     @RequestMapping(value = "/{orderNumber}", method = RequestMethod.GET)
+    @Override
     public String viewOrderDetails(HttpServletRequest request, Model model, @PathVariable("orderNumber") String orderNumber) {
         return super.viewOrderDetails(request, model, orderNumber);
     }
-
 }

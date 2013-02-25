@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.mycompany.controller.catalog;
 
 import org.broadleafcommerce.core.web.controller.catalog.BroadleafProductController;
@@ -24,15 +23,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * This class works in combination with the CategoryHandlerMapping which finds a category based upon
- * the passed in URL.
+ * This class works in combination with the CategoryHandlerMapping which finds a
+ * category based upon the passed in URL.
  */
 @Controller("blProductController")
 public class ProductController extends BroadleafProductController {
-    
+
     @Override
     public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
         return super.handleRequest(request, response);
     }
-
 }

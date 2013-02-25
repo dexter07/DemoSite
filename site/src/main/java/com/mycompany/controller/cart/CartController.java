@@ -13,9 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.mycompany.controller.cart;
-
 
 import org.broadleafcommerce.core.catalog.domain.Product;
 import org.broadleafcommerce.core.order.service.exception.AddToCartException;
@@ -44,13 +42,13 @@ import java.util.Map;
 @Controller
 @RequestMapping("/cart")
 public class CartController extends BroadleafCartController {
-    
+
     @Override
     @RequestMapping("")
     public String cart(HttpServletRequest request, HttpServletResponse response, Model model) throws PricingException {
         return super.cart(request, response, model);
     }
-    
+
     /*
      * The Heat Clnic does not show the cart when a product is added. Instead, when the product is added via an AJAX
      * POST that requests JSON, we only need to return a few attributes to update the state of the page. The most
@@ -59,19 +57,20 @@ public class CartController extends BroadleafCartController {
      * returned object into JSON for easy processing via JavaScript.
      */
     @RequestMapping(value = "/add", produces = "application/json")
-    public @ResponseBody Map<String, Object> addJson(HttpServletRequest request, HttpServletResponse response, Model model,
+    public @ResponseBody
+    Map<String, Object> addJson(HttpServletRequest request, HttpServletResponse response, Model model,
             @ModelAttribute("addToCartItem") AddToCartItem addToCartItem) throws IOException, PricingException, AddToCartException {
         Map<String, Object> responseMap = new HashMap<String, Object>();
         try {
             super.add(request, response, model, addToCartItem);
-            
-            if (addToCartItem.getItemAttributes() == null || addToCartItem.getItemAttributes().size() == 0) {
+
+            if (addToCartItem.getItemAttributes() == null || addToCartItem.getItemAttributes().isEmpty()) {
                 responseMap.put("productId", addToCartItem.getProductId());
             }
             responseMap.put("productName", catalogService.findProductById(addToCartItem.getProductId()).getName());
             responseMap.put("quantityAdded", addToCartItem.getQuantity());
             responseMap.put("cartItemCount", String.valueOf(CartState.getCart().getItemCount()));
-            if (addToCartItem.getItemAttributes() == null || addToCartItem.getItemAttributes().size() == 0) {
+            if (addToCartItem.getItemAttributes() == null || addToCartItem.getItemAttributes().isEmpty()) {
                 // We don't want to return a productId to hide actions for when it is a product that has multiple
                 // product options. The user may want the product in another version of the options as well.
                 responseMap.put("productId", addToCartItem.getProductId());
@@ -83,16 +82,16 @@ public class CartController extends BroadleafCartController {
                 throw e;
             }
         }
-        
+
         return responseMap;
     }
-    
+
     /*
      * The Heat Clinic does not support adding products with required product options from a category browse page
      * when JavaScript is disabled. When this occurs, we will redirect the user to the full product details page 
      * for the given product so that the required options may be chosen.
      */
-    @RequestMapping(value = "/add", produces = { "text/html", "*/*" })
+    @RequestMapping(value = "/add", produces = {"text/html", "*/*"})
     public String add(HttpServletRequest request, HttpServletResponse response, Model model, RedirectAttributes redirectAttributes,
             @ModelAttribute("addToCartItem") AddToCartItem addToCartItem) throws IOException, PricingException, AddToCartException {
         try {
@@ -102,40 +101,39 @@ public class CartController extends BroadleafCartController {
             return "redirect:" + product.getUrl();
         }
     }
-    
+
     @RequestMapping("/updateQuantity")
     public String updateQuantity(HttpServletRequest request, HttpServletResponse response, Model model, RedirectAttributes redirectAttributes,
             @ModelAttribute("addToCartItem") AddToCartItem addToCartItem) throws IOException, PricingException, UpdateCartException, RemoveFromCartException {
         return super.updateQuantity(request, response, model, addToCartItem);
     }
-    
+
     @Override
     @RequestMapping("/remove")
     public String remove(HttpServletRequest request, HttpServletResponse response, Model model,
             @ModelAttribute("addToCartItem") AddToCartItem addToCartItem) throws IOException, PricingException, RemoveFromCartException {
         return super.remove(request, response, model, addToCartItem);
     }
-    
+
     @Override
     @RequestMapping("/empty")
     public String empty(HttpServletRequest request, HttpServletResponse response, Model model) throws PricingException {
         //return super.empty(request, response, model);
         return "ajaxredirect:/";
-        
+
     }
-    
+
     @Override
     @RequestMapping("/promo")
     public String addPromo(HttpServletRequest request, HttpServletResponse response, Model model,
             @RequestParam("promoCode") String customerOffer) throws IOException, PricingException {
         return super.addPromo(request, response, model, customerOffer);
     }
-    
+
     @Override
     @RequestMapping("/promo/remove")
     public String removePromo(HttpServletRequest request, HttpServletResponse response, Model model,
             @RequestParam("offerCodeId") Long offerCodeId) throws IOException, PricingException {
         return super.removePromo(request, response, model, offerCodeId);
     }
-    
 }

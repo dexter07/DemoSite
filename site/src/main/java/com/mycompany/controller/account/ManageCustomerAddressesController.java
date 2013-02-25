@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.mycompany.controller.account;
 
 import org.broadleafcommerce.common.exception.ServiceException;
@@ -42,49 +41,56 @@ import java.util.List;
 public class ManageCustomerAddressesController extends BroadleafManageCustomerAddressesController {
 
     @InitBinder
+    @Override
     protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) throws Exception {
         super.initBinder(request, binder);
     }
-    
+
     @ModelAttribute("states")
+    @Override
     protected List<State> populateStates() {
         return super.populateStates();
     }
-    
+
     @ModelAttribute("countries")
+    @Override
     protected List<Country> populateCountries() {
         return super.populateCountries();
     }
-    
+
     @ModelAttribute("customerAddresses")
+    @Override
     protected List<CustomerAddress> populateCustomerAddresses() {
         return super.populateCustomerAddresses();
     }
-    
+
     @RequestMapping(method = RequestMethod.GET)
+    @Override
     public String viewCustomerAddresses(HttpServletRequest request, Model model) {
         return super.viewCustomerAddresses(request, model);
     }
-    
+
     @RequestMapping(method = RequestMethod.POST)
+    @Override
     public String addCustomerAddress(HttpServletRequest request, Model model, @ModelAttribute("customerAddressForm") CustomerAddressForm form, BindingResult result, RedirectAttributes redirectAttributes) throws ServiceException {
         return super.addCustomerAddress(request, model, form, result, redirectAttributes);
     }
-    
+
     @RequestMapping(value = "/{customerAddressId}", method = RequestMethod.GET)
+    @Override
     public String viewCustomerAddress(HttpServletRequest request, Model model, @PathVariable("customerAddressId") Long customerAddressId) {
         return super.viewCustomerAddress(request, model, customerAddressId);
     }
 
     @RequestMapping(value = "/{customerAddressId}", method = RequestMethod.POST)
+    @Override
     public String updateCustomerAddress(HttpServletRequest request, Model model, @PathVariable("customerAddressId") Long customerAddressId, @ModelAttribute("customerAddressForm") CustomerAddressForm form, BindingResult result, RedirectAttributes redirectAttributes) throws ServiceException {
         return super.updateCustomerAddress(request, model, customerAddressId, form, result, redirectAttributes);
     }
 
-    @RequestMapping(value = "/{customerAddressId}", method = RequestMethod.POST, params="removeAddress=Remove")
+    @RequestMapping(value = "/{customerAddressId}", method = RequestMethod.POST, params = "removeAddress=Remove")
+    @Override
     public String removeCustomerAddress(HttpServletRequest request, Model model, @PathVariable("customerAddressId") Long customerAddressId, RedirectAttributes redirectAttributes) {
         return super.removeCustomerAddress(request, model, customerAddressId, redirectAttributes);
     }
-    
-    
 }

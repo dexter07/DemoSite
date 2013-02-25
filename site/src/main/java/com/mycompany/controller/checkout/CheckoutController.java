@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.mycompany.controller.checkout;
 
 import org.apache.commons.collections.CollectionUtils;
@@ -52,11 +51,11 @@ import java.util.List;
 public class CheckoutController extends BroadleafCheckoutController {
 
     /*
-    * The Checkout page for Heat Clinic will have the shipping information pre-populated 
-    * with an address if the fulfillment group has an address and fulfillment option 
-    * associated with it. It also assumes that there is only one payment info of type 
-    * credit card on the order. If so, then the billing address will be pre-populated.
-    */
+     * The Checkout page for Heat Clinic will have the shipping information pre-populated 
+     * with an address if the fulfillment group has an address and fulfillment option 
+     * associated with it. It also assumes that there is only one payment info of type 
+     * credit card on the order. If so, then the billing address will be pre-populated.
+     */
     @RequestMapping("")
     public String checkout(HttpServletRequest request, HttpServletResponse response, Model model,
             @ModelAttribute("orderInfoForm") OrderInfoForm orderInfoForm,
@@ -65,23 +64,25 @@ public class CheckoutController extends BroadleafCheckoutController {
         prepopulateCheckoutForms(CartState.getCart(), orderInfoForm, shippingForm, billingForm);
         return super.checkout(request, response, model, redirectAttributes);
     }
-    
+
     @RequestMapping(value = "/savedetails", method = RequestMethod.POST)
-    public String saveGlobalOrderDetails(HttpServletRequest request, Model model, 
+    @Override
+    public String saveGlobalOrderDetails(HttpServletRequest request, Model model,
             @ModelAttribute("orderInfoForm") OrderInfoForm orderInfoForm, BindingResult result) throws ServiceException {
         return super.saveGlobalOrderDetails(request, model, orderInfoForm, result);
     }
-    
-    @RequestMapping(value="/singleship", method = RequestMethod.GET)
+
+    @RequestMapping(value = "/singleship", method = RequestMethod.GET)
+    @Override
     public String convertToSingleship(HttpServletRequest request, HttpServletResponse response, Model model) throws PricingException {
         return super.convertToSingleship(request, response, model);
     }
 
-    @RequestMapping(value="/singleship", method = RequestMethod.POST)
+    @RequestMapping(value = "/singleship", method = RequestMethod.POST)
     public String saveSingleShip(HttpServletRequest request, HttpServletResponse response, Model model,
             @ModelAttribute("orderInfoForm") OrderInfoForm orderInfoForm,
             @ModelAttribute("billingInfoForm") BillingInfoForm billingForm,
-            @ModelAttribute("shippingInfoForm") ShippingInfoForm shippingForm, 
+            @ModelAttribute("shippingInfoForm") ShippingInfoForm shippingForm,
             BindingResult result) throws PricingException, ServiceException {
         prepopulateOrderInfoForm(CartState.getCart(), orderInfoForm);
         return super.saveSingleShip(request, response, model, shippingForm, result);
@@ -89,25 +90,27 @@ public class CheckoutController extends BroadleafCheckoutController {
 
     @RequestMapping(value = "/multiship", method = RequestMethod.GET)
     public String showMultiship(HttpServletRequest request, HttpServletResponse response, Model model,
-            @ModelAttribute("orderMultishipOptionForm") OrderMultishipOptionForm orderMultishipOptionForm, 
+            @ModelAttribute("orderMultishipOptionForm") OrderMultishipOptionForm orderMultishipOptionForm,
             BindingResult result) throws PricingException {
         return super.showMultiship(request, response, model);
     }
-    
+
     @RequestMapping(value = "/multiship", method = RequestMethod.POST)
+    @Override
     public String saveMultiship(HttpServletRequest request, HttpServletResponse response, Model model,
-            @ModelAttribute("orderMultishipOptionForm") OrderMultishipOptionForm orderMultishipOptionForm, 
+            @ModelAttribute("orderMultishipOptionForm") OrderMultishipOptionForm orderMultishipOptionForm,
             BindingResult result) throws PricingException, ServiceException {
         return super.saveMultiship(request, response, model, orderMultishipOptionForm, result);
     }
-    
+
     @RequestMapping(value = "/add-address", method = RequestMethod.GET)
     public String showMultishipAddAddress(HttpServletRequest request, HttpServletResponse response, Model model,
             @ModelAttribute("addressForm") ShippingInfoForm addressForm, BindingResult result) {
         return super.showMultishipAddAddress(request, response, model);
     }
-    
+
     @RequestMapping(value = "/add-address", method = RequestMethod.POST)
+    @Override
     public String saveMultishipAddAddress(HttpServletRequest request, HttpServletResponse response, Model model,
             @ModelAttribute("addressForm") ShippingInfoForm addressForm, BindingResult result) throws ServiceException {
         return super.saveMultishipAddAddress(request, response, model, addressForm, result);
@@ -128,13 +131,13 @@ public class CheckoutController extends BroadleafCheckoutController {
             orderInfoForm.setEmailAddress(cart.getEmailAddress());
         }
     }
-            
-    protected void prepopulateCheckoutForms(Order cart, OrderInfoForm orderInfoForm, ShippingInfoForm shippingForm, 
+
+    protected void prepopulateCheckoutForms(Order cart, OrderInfoForm orderInfoForm, ShippingInfoForm shippingForm,
             BillingInfoForm billingForm) {
         List<FulfillmentGroup> groups = cart.getFulfillmentGroups();
-        
+
         prepopulateOrderInfoForm(cart, orderInfoForm);
-        
+
         if (CollectionUtils.isNotEmpty(groups) && groups.get(0).getFulfillmentOption() != null) {
             //if the cart has already has fulfillment information
             shippingForm.setAddress(groups.get(0).getAddress());
@@ -159,8 +162,8 @@ public class CheckoutController extends BroadleafCheckoutController {
     }
 
     @InitBinder
+    @Override
     protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) throws Exception {
         super.initBinder(request, binder);
     }
-    
 }

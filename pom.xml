@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.mycompany</groupId>
@@ -172,7 +172,17 @@
                 <scope>compile</scope>
             </dependency>
 
-            <!--Broadleaf libraries -->
+            <!--Broadleaf Extension libraries -->
+
+            <dependency>
+                <groupId>org.broadleafcommerce</groupId>
+                <artifactId>broadleaf-i18n</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+                <type>jar</type>
+                <scope>compile</scope>
+            </dependency>
+
+             <!--Broadleaf Core libraries -->
             <dependency>
                 <groupId>org.broadleafcommerce</groupId>
                 <artifactId>broadleaf-common</artifactId>
@@ -315,9 +325,9 @@
                 <version>4.1.0.Final</version>
             </dependency>
             <dependency>
-                 <groupId>javax.validation</groupId>
-                 <artifactId>validation-api</artifactId>
-                 <version>1.0.0.GA</version>
+                <groupId>javax.validation</groupId>
+                <artifactId>validation-api</artifactId>
+                <version>1.0.0.GA</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.tomcat</groupId>
@@ -332,6 +342,6 @@
         <module>admin</module>
         <module>core</module>
         <module>site</module>
-            <module>combined</module>
-        </modules>
+        <module>combined</module>
+    </modules>
 </project>

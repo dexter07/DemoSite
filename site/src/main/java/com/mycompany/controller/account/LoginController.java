@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.mycompany.controller.account;
 
 import org.broadleafcommerce.common.exception.ServiceException;
@@ -35,37 +34,42 @@ import javax.servlet.http.HttpServletResponse;
  */
 @Controller
 public class LoginController extends BroadleafLoginController {
-    
+
     @RequestMapping("/login")
+    @Override
     public String login(HttpServletRequest request, HttpServletResponse response, Model model) {
         return super.login(request, response, model);
     }
-    
-    @RequestMapping(value="/login/forgotPassword", method=RequestMethod.GET)
+
+    @RequestMapping(value = "/login/forgotPassword", method = RequestMethod.GET)
+    @Override
     public String forgotPassword(HttpServletRequest request, HttpServletResponse response, Model model) {
         return super.forgotPassword(request, response, model);
     }
-    
-    @RequestMapping(value="/login/forgotPassword", method=RequestMethod.POST)
+
+    @RequestMapping(value = "/login/forgotPassword", method = RequestMethod.POST)
+    @Override
     public String processForgotPassword(@RequestParam("emailAddress") String emailAddress, HttpServletRequest request, Model model) {
         return super.processForgotPassword(emailAddress, request, model);
-    }   
+    }
 
-    @RequestMapping(value="/login/resetPassword", method=RequestMethod.GET)
+    @RequestMapping(value = "/login/resetPassword", method = RequestMethod.GET)
+    @Override
     public String resetPassword(HttpServletRequest request, HttpServletResponse response, Model model) {
         return super.resetPassword(request, response, model);
-    }   
-    
-    @RequestMapping(value="/login/resetPassword", method=RequestMethod.POST)
+    }
+
+    @RequestMapping(value = "/login/resetPassword", method = RequestMethod.POST)
+    @Override
     public String processResetPassword(@ModelAttribute("resetPasswordForm") ResetPasswordForm resetPasswordForm, HttpServletRequest request, HttpServletResponse response, Model model, BindingResult errors) throws ServiceException {
         return super.processResetPassword(resetPasswordForm, request, response, model, errors);
-    }   
-    
+    }
+
     @Override
-    public String getResetPasswordUrl(HttpServletRequest request) {     
+    public String getResetPasswordUrl(HttpServletRequest request) {
         String url = request.getScheme() + "://" + request.getServerName() + getResetPasswordPort(request, request.getScheme() + "/");
-        
-        if (request.getContextPath() != null && ! "".equals(request.getContextPath())) {
+
+        if (request.getContextPath() != null && (!request.getContextPath().isEmpty())) {
             url = url + request.getContextPath() + "/login/resetPassword";
         } else {
             url = url + "/login/resetPassword";

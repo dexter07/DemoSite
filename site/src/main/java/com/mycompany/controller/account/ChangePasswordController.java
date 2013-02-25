@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.mycompany.controller.account;
 
 import org.broadleafcommerce.common.exception.ServiceException;
@@ -39,8 +38,8 @@ public class ChangePasswordController extends BroadleafChangePasswordController 
     }
 
     @RequestMapping(method = RequestMethod.POST)
+    @Override
     public String processChangePassword(HttpServletRequest request, Model model, @ModelAttribute("changePasswordForm") ChangePasswordForm form, BindingResult result, RedirectAttributes redirectAttributes) throws ServiceException {
         return super.processChangePassword(request, model, form, result, redirectAttributes);
     }
-    
 }

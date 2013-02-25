@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.mycompany.controller.account;
 
 import org.broadleafcommerce.common.web.controller.BroadleafRedirectController;
@@ -26,22 +25,24 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * The controller expects a session attribute to be set called BLC_REDIRECT_URL and 
- * that it is being called from an Ajax redirect process.
- * 
- * It would be unexpected for an implementor to modify this class or the corresponding view
- * blcRedirect.html.  
- * 
- * The purpose of this class is to support ajax redirects after a successful login. 
- * 
+ * The controller expects a session attribute to be set called BLC_REDIRECT_URL
+ * and that it is being called from an Ajax redirect process.
+ *
+ * It would be unexpected for an implementor to modify this class or the
+ * corresponding view blcRedirect.html.
+ *
+ * The purpose of this class is to support ajax redirects after a successful
+ * login.
+ *
  * @see BroadleafAuthenticationSuccessRedirectStrategy
- * 
+ *
  * @author bpolster
  */
 @Controller
 public class RedirectController extends BroadleafRedirectController {
-    
+
     @RequestMapping("/redirect")
+    @Override
     public String redirect(HttpServletRequest request, HttpServletResponse response, Model model) {
         return super.redirect(request, response, model);
     }

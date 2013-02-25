@@ -49,6 +49,7 @@ public class RegisterController extends BroadleafRegisterController {
     }
     
     @ModelAttribute("registrationForm") 
+    @Override
     public RegisterCustomerForm initCustomerRegistrationForm() {
         return super.initCustomerRegistrationForm();        
     }

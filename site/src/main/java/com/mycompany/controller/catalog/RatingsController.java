@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.mycompany.controller.catalog;
 
 import javax.servlet.http.HttpServletRequest;
@@ -34,11 +33,9 @@ public class RatingsController extends BroadleafRatingsController {
     public String viewReviewForm(HttpServletRequest request, Model model, @PathVariable("itemId") String itemId, @ModelAttribute("reviewForm") ReviewForm form) {
         return super.viewReviewForm(request, model, form, itemId);
     }
-    
+
     @RequestMapping(value = "/reviews/product/{itemId}", method = RequestMethod.POST)
     public String reviewItem(HttpServletRequest request, Model model, @PathVariable("itemId") String itemId, @ModelAttribute("reviewForm") ReviewForm form) {
         return super.reviewItem(request, model, form, itemId);
     }
-    
-    
 }
