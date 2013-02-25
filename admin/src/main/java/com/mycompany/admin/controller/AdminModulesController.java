@@ -25,9 +25,9 @@ import javax.servlet.http.HttpServletResponse;
 /**
  *
  * @author jfridye
- * @see org.broadleafcommerce.openadmin.web.handler.AdminNavigationHandlerMapping
- * Date: 9/12/12
- * Time: 11:34 AM
+ * @see
+ * org.broadleafcommerce.openadmin.web.handler.AdminNavigationHandlerMapping
+ * Date: 9/12/12 Time: 11:34 AM
  */
 @Controller("blAdminModulesController")
 public class AdminModulesController extends BroadleafAdminModulesController {
@@ -36,5 +36,4 @@ public class AdminModulesController extends BroadleafAdminModulesController {
     public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
         return super.handleRequest(request, response);
     }
-
 }
