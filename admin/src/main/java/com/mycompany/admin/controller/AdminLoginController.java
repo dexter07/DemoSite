@@ -28,16 +28,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@Controller("blAdminLoginController")
 /**
  * AdminLoginController handles login related needs for the BLC admin including:
- * <ul>
- * <li>Forgot Password</li>
- * <li>Forgot Username</li>
- * <li>Reset Password</li>
- * </ul>
+ * <ul> <li>Forgot Password</li> <li>Forgot Username</li> <li>Reset
+ * Password</li> </ul>
  *
  */
+@Controller("blAdminLoginController")
 public class AdminLoginController extends BroadleafAdminLoginController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
