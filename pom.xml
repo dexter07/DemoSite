@@ -181,8 +181,14 @@
                 <type>jar</type>
                 <scope>compile</scope>
             </dependency>
+            
+            <dependency>
+                <groupId>org.broadleafcommerce</groupId>
+                <artifactId>broadleaf-inventory</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+            </dependency>
 
-             <!--Broadleaf Core libraries -->
+            <!--Broadleaf Core libraries -->
             <dependency>
                 <groupId>org.broadleafcommerce</groupId>
                 <artifactId>broadleaf-common</artifactId>

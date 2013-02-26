@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee 
          http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd" id="WebApp_ID">
 
     <display-name>mycompany-admin</display-name>
@@ -20,6 +20,7 @@
             classpath:/bl-cms-contentClient-applicationContext.xml
             classpath:/bl-cms-contentCreator-applicationContext.xml
             classpath:/bl-i18n-applicationContext.xml
+            classpath:/bl-inventory-applicationContext.xml
             classpath:/applicationContext.xml
             /WEB-INF/applicationContext-datasource.xml
             /WEB-INF/applicationContext-admin-security.xml

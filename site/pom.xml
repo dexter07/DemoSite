@@ -119,6 +119,10 @@
             <artifactId>broadleaf-i18n</artifactId>
         </dependency>
         <dependency>
+            <groupId>org.broadleafcommerce</groupId>
+            <artifactId>broadleaf-inventory</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.hsqldb</groupId>
             <artifactId>hsqldb</artifactId>
         </dependency>

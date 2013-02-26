@@ -233,6 +233,10 @@
         </dependency>
         <dependency>
             <groupId>org.broadleafcommerce</groupId>
+            <artifactId>broadleaf-inventory</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.broadleafcommerce</groupId>
             <artifactId>broadleaf-admin-module</artifactId>
         </dependency>
         <dependency>
